@@ -1,19 +1,17 @@
 package com.project.backend.models.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 /**
  * The type Vehicle.
  */
 @Entity
+@Table(name = "vehicle")
 public class Vehicle {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
+  private Long id;
   private String model;
   private String brand;
   private String color;
@@ -26,7 +24,6 @@ public class Vehicle {
    * Instantiates a new Vehicle.
    */
   public Vehicle() {
-
   }
 
   /**
@@ -38,12 +35,21 @@ public class Vehicle {
    * @param manufacturingYear the manufacturing year
    * @param licensePlate      the license plate
    */
-  public Vehicle(String model, String brand, String color, int manufacturingYear, String licensePlate) {
+  public Vehicle(Long id, String model, String brand, String color, int manufacturingYear, String licensePlate) {
+    this.id = id;
     this.model = model;
     this.brand = brand;
     this.color = color;
     this.manufacturingYear = manufacturingYear;
     this.licensePlate = licensePlate;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
   }
 
   public String getModel() {
