@@ -11,7 +11,8 @@ public record VehicleDto(
   String brand,
   String color,
   int manufacturingYear,
-  String licensePlate) {
+  String licensePlate,
+  boolean reserved) {
 
   /**
    * To vehicle vehicle.
