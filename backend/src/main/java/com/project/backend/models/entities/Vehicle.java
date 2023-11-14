@@ -19,6 +19,8 @@ public class Vehicle {
   private String color;
   private int manufacturingYear;
   private String licensePlate;
+  private boolean reserved = false;
+
 
   /**
    * Instantiates a new Vehicle.
@@ -82,5 +84,13 @@ public class Vehicle {
 
   public void setLicensePlate(String licensePlate) {
     this.licensePlate = licensePlate;
+  }
+
+  public boolean isReserved() {
+    return reserved;
+  }
+
+  public void setReserved(boolean reserved) {
+    this.reserved = reserved;
   }
 }
