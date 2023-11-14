@@ -1,0 +1,20 @@
+<div>
+  <ul>
+    <li *ngFor="let vehicle of vehicles">
+      <p>{{vehicle.brand}}</p>
+      <p>{{vehicle.model}}</p>
+      <p>{{vehicle.color}}</p>
+      <p>{{vehicle.manufacturingYear}}</p>
+      <p>{{vehicle.licensePlate}}</p>
+      <p>{{vehicle.reserved}}</p>
+      <button (click)="removeVehicle(vehicle)">Excluir</button>
+      <div *ngIf="!vehicle.reserved; else content" >
+        <button (click)="reserveVehicle(vehicle)">Reservar</button>
+      </div>
+      <ng-template #content>
+        <button (click)="reserveVehicle(vehicle)">Reservado</button>
+      </ng-template>
+
+    </li>
+  </ul>
+</div>
