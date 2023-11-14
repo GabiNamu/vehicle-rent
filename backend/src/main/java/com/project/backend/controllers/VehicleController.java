@@ -78,9 +78,9 @@ public class VehicleController {
   public ResponseEntity<ResponseDto<Vehicle>> removeById(@PathVariable Long vehicleId) {
     Optional<Vehicle> optionalVehicle = vehicleService.removeById(vehicleId);
 
-    if (optionalVehicle.isEmpty()) {
+    if (optionalVehicle.isEmpty() || optionalVehicle.get().isReserved()) {
       ResponseDto<Vehicle> responseDto = new ResponseDto<>(
-        String.format("Não foi encontrado o veículo de ID %d", vehicleId), null);
+        String.format("Não foi possível deletar o veículo de ID %d", vehicleId), null);
       return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseDto);
     }
 

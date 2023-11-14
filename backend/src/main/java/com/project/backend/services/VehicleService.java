@@ -67,7 +67,9 @@ public class VehicleService {
     Optional<Vehicle> vehicleOptional = vehicleRepository.findById(id);
 
     if (vehicleOptional.isPresent()) {
-      vehicleRepository.deleteById(id);
+      if (!vehicleOptional.get().isReserved()) {
+        vehicleRepository.deleteById(id);
+      }
     }
 
     return vehicleOptional;
