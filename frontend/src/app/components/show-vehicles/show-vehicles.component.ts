@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Vehicle } from './../../Vehicle';
 import { VehicleService } from './../../services/vehicle.service';
 import { Component } from '@angular/core';
@@ -10,11 +11,22 @@ import { Component } from '@angular/core';
 export class ShowVehiclesComponent {
   vehicles: Vehicle[] = [];
   
-  constructor(private vehicleService: VehicleService) {
+  constructor(
+    private vehicleService: VehicleService,
+    private route: ActivatedRoute,
+    private router: Router) {
     this.getVehicles();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getVehicles();
+
+    this.route.url.subscribe(() => {
+      if (this.router.url === '/') {
+        this.getVehicles();
+      }
+    });
+  }
   
   getVehicles(): void {
     this.vehicleService.getAll().subscribe((vehicles) => (this.vehicles = vehicles));

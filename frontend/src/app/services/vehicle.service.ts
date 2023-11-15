@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Vehicle } from '../Vehicle';
+import { Vehicle, addVehicle } from '../Vehicle';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +20,11 @@ export class VehicleService {
   }
 
   reserve(id: number, vehicle: Vehicle) {
-    console.log("entrei aqui")
     return this.http.put<Vehicle>(`${this.apiUrl}/${id}`, vehicle);
+  }
+
+  insert(vehicle: addVehicle) {
+    return this.http.post<addVehicle>(this.apiUrl, vehicle);
   }
   
 }

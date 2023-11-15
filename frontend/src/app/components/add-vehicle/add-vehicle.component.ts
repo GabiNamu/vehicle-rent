@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-vehicle',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-vehicle.component.scss']
 })
 export class AddVehicleComponent {
+  constructor(private router: Router) {}
 
+  redirect() {
+    this.router.navigate(['/add']);
+  }
 }

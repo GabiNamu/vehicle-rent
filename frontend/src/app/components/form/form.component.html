@@ -1,1 +1,31 @@
-<p>form works!</p>
+<form (ngSubmit)="submit()" [formGroup]="vehicleForm" #formDir="ngForm">
+  <input 
+  type="text" 
+  placeholder="Marca"
+  formControlName="brand"
+  required
+  >
+  <div *ngIf="brand.invalid && formDir.submitted">
+    <p *ngIf="brand.errors?.['required']">O título é Obrigatório</p>
+  </div>
+  <input 
+  type="text" 
+  placeholder="Modelo"
+  formControlName="model"
+  >
+  <input 
+  type="text" 
+  placeholder="Cor"
+  formControlName="color"
+  >
+  <input 
+  type="number" 
+  placeholder="Ano de Fabricação"
+  formControlName="manufacturingYear"
+  >
+  <input 
+  type="text" 
+  placeholder="Placa"
+  formControlName="licensePlate">
+  <button type="submit">Enviar</button>
+</form>
