@@ -1,20 +1,34 @@
 <div>
-  <ul>
-    <li *ngFor="let vehicle of vehicles">
-      <p>{{vehicle.brand}}</p>
-      <p>{{vehicle.model}}</p>
-      <p>{{vehicle.color}}</p>
-      <p>{{vehicle.manufacturingYear}}</p>
-      <p>{{vehicle.licensePlate}}</p>
-      <p>{{vehicle.reserved}}</p>
-      <button (click)="removeVehicle(vehicle)">Excluir</button>
-      <div *ngIf="!vehicle.reserved; else content" >
-        <button (click)="reserveVehicle(vehicle)">Reservar</button>
+  <ul class="d-flex gap-3">
+    <li *ngFor="let vehicle of vehicles" class="card text-bg-dark" style="width: 18rem;" >
+      <h5 class="card-header">{{vehicle.model}}</h5>
+      <div class="card-body border border-primary">
+        <div class="row">
+          <p class="col">Marca:</p>
+          <p class="card-title col">{{vehicle.brand}}</p>
+        </div>
+        <div class="row">
+          <p class="col">Cor:</p>
+          <p class="card-text col">{{vehicle.color}}</p>
+        </div>
+        <div class="row">
+          <p class="col">Ano de Fabricação:</p>
+          <p class="card-text col">{{vehicle.manufacturingYear}}</p>
+        </div>
+        <div class="row">
+          <p class="col">Placa:</p>
+          <p class="card-text col">{{vehicle.licensePlate}}</p>
+        </div>
+        <div class="d-flex justify-content-between">
+          <button (click)="removeVehicle(vehicle)" class="btn btn-outline-primary">Excluir</button>
+          <div *ngIf="!vehicle.reserved; else content" >
+            <button (click)="reserveVehicle(vehicle)" class="btn btn-outline-primary">Reservar</button>
+          </div>
+          <ng-template #content>
+            <button (click)="reserveVehicle(vehicle)" class="btn btn-outline-danger">Reservado</button>
+          </ng-template>
       </div>
-      <ng-template #content>
-        <button (click)="reserveVehicle(vehicle)">Reservado</button>
-      </ng-template>
-
+    </div>
     </li>
   </ul>
 </div>

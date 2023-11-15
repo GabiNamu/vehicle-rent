@@ -9,13 +9,17 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ShowVehiclesComponent } from './components/show-vehicles/show-vehicles.component';
+import { AddVehicleComponent } from './components/add-vehicle/add-vehicle.component';
+import { FormComponent } from './components/form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ShowVehiclesComponent
+    ShowVehiclesComponent,
+    AddVehicleComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,

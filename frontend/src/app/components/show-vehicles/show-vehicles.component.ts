@@ -28,8 +28,13 @@ export class ShowVehiclesComponent {
   }
 
   reserveVehicle(vehicle: Vehicle) {
-    this.vehicles = this.vehicles.filter((a) => vehicle !== a);
-    this.vehicleService.reserve(vehicle.id, vehicle).subscribe((vehicle) => (this.vehicles.push(vehicle)));
+    this.vehicles.map((element) => {
+      if (element.id == vehicle.id) {
+        element.reserved = !vehicle.reserved
+      }
+      return 
+    });
+    this.vehicleService.reserve(vehicle.id, vehicle).subscribe();
   }
   
 }
