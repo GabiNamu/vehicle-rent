@@ -1,31 +1,58 @@
-<form (ngSubmit)="submit()" [formGroup]="vehicleForm" #formDir="ngForm">
-  <input 
-  type="text" 
-  placeholder="Marca"
-  formControlName="brand"
-  required
-  >
-  <div *ngIf="brand.invalid && formDir.submitted">
-    <p *ngIf="brand.errors?.['required']">O título é Obrigatório</p>
+<form (ngSubmit)="submit()" [formGroup]="vehicleForm" #formDir="ngForm" 
+class="container mt-5 p-4 bg-dark"
+style="max-width: 700px;"
+>
+<p class="text-light">Adicione seu Veículo:</p>
+  <div class="form-floating mb-3">
+    <input 
+    class="form-control"
+    type="text" 
+    placeholder="Marca"
+    formControlName="brand"
+    required
+    >
+    <label for="floatingInput">Marca</label>
   </div>
-  <input 
-  type="text" 
-  placeholder="Modelo"
-  formControlName="model"
-  >
-  <input 
-  type="text" 
-  placeholder="Cor"
-  formControlName="color"
-  >
-  <input 
-  type="number" 
-  placeholder="Ano de Fabricação"
-  formControlName="manufacturingYear"
-  >
-  <input 
-  type="text" 
-  placeholder="Placa"
-  formControlName="licensePlate">
-  <button type="submit">Enviar</button>
+  <div class="form-floating mb-3">
+    <input 
+    class="form-control"
+    type="text" 
+    placeholder="Modelo"
+    formControlName="model"
+    >
+    <label for="floatingInput">Modelo</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input 
+    class="form-control"
+    type="text" 
+    placeholder="Cor"
+    formControlName="color"
+    >
+    <label for="floatingInput">Cor</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input 
+    class="form-control"
+    type="number" 
+    placeholder="Ano de Fabricação"
+    formControlName="manufacturingYear"
+    >
+    <label for="floatingInput">Ano de Fabricação</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input 
+    class="form-control"
+    type="text" 
+    placeholder="Placa"
+    formControlName="licensePlate">
+    <label for="floatingInput">Placa</label>
+  </div>
+  
+  <div *ngIf="formDir.submitted">
+    <p *ngIf="vehicleForm.invalid" class="form-text text-danger">Todos os campos são Obrigatórios!</p>
+  </div>
+  <div class="d-grid">
+  <button type="submit" class="btn btn-outline-primary btn-lg">Cadastrar</button>
+</div>
 </form>

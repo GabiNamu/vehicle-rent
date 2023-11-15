@@ -48,5 +48,15 @@ export class ShowVehiclesComponent {
     });
     this.vehicleService.reserve(vehicle.id, vehicle).subscribe();
   }
+
+  filterReserved() {
+    this.vehicleService.getAll().subscribe(
+      (vehicles) => (this.vehicles = vehicles.filter((vehicle) => vehicle.reserved == true)));
+  }
+
+  filterNotReserved() {
+    this.vehicleService.getAll().subscribe(
+      (vehicles) => (this.vehicles = vehicles.filter((vehicle) => vehicle.reserved == false)));
+  }
   
 }
