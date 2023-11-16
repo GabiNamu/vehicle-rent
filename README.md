@@ -26,7 +26,7 @@
 - Primeiro clone o repositório para sua máquina:
 
 ```
-git clone git@github.com:GabiNamu/TrybeTunes.git
+git clone git@github.com:GabiNamu/vehicle-rent.git
 ```
 
 ### Backend:
