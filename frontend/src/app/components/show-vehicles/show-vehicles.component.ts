@@ -27,12 +27,10 @@ export class ShowVehiclesComponent {
         this.getVehicles();
       }
     });
-    console.log(this.vehicles);
   }
   
   getVehicles(): void {
     this.vehicleService.getAll().subscribe((vehicles) => (this.vehicles = vehicles));
-    console.log(this.vehicles);
   }
 
   removeVehicle(vehicle: Vehicle){
@@ -44,7 +42,6 @@ export class ShowVehiclesComponent {
 
   reserveVehicle(vehicle: Vehicle) {
     this.router.navigate(['/reservar', vehicle.id]);
-    console.log(this.vehicles);
   }
 
   removeReserve() {
