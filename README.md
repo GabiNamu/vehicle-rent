@@ -1,4 +1,4 @@
-# vehicle-rent
+# Vehicle Rent:
 <p>Aplicação de aluguel de veículos:</p>
 
 ```diff
@@ -31,7 +31,7 @@ git clone git@github.com:GabiNamu/vehicle-rent.git
 
 ### Backend:
 ```diff
-! Se não puder rodar o seu backend na porta 8080, mude no frontend no arquivo vehicle.service.ts a variavel apiUrl para a porta que você irá usar
+! Se não puder rodar o seu backend na porta 8080, mude no frontend no arquivo vehicle.service.ts a variável apiUrl para a porta que você irá usar
 ```
 - Vá para o diretório do projeto:
 ```
@@ -47,7 +47,7 @@ mvn spring-boot:run
 ```
 ### Frontend:
 ```diff
-! Se não puder rodar a seu frontend na porta 4200, mude no backend na classe CorsConfiguration para a porta que você irá usar
+! Se não puder rodar o seu frontend na porta 4200, mude no backend na classe CorsConfiguration para a porta que você irá usar
 ```
 - Vá para o diretório do projeto:
 ```
@@ -136,7 +136,7 @@ Delete `/{id}`:
 <details>
   <summary>🔍 Formato/exemplo de requisição e resposta</summary><br />
 
-Exemplo de resposta para a rota `/1` (supondo que exista um veículo com `id = 1`:
+Exemplo de resposta para a rota Delete `/1` (supondo que exista um veículo com `id = 1`:
 
 Exemplo de resposta:
 ```json
@@ -183,7 +183,7 @@ Delete `/{vehicleId}/reserve`:
 <details>
   <summary>🔍 Formato/exemplo de requisição e resposta</summary><br />
 
-Exemplo de resposta para a rota Post `/2/reserve` (supondo que exista um veículo com `id = 2`:
+Exemplo de resposta para a rota Delete `/2/reserve` (supondo que exista um veículo com `id = 2`:
 
 Exemplo de resposta:
 ```json
