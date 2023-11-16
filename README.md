@@ -53,6 +53,10 @@ mvn spring-boot:run
 ```
 cd vehicle-rent/frontend
 ```
+- instale as dependências:
+```
+npm install
+```
 - Run:
 ```
 npm start
