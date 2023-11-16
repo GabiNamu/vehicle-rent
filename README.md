@@ -105,13 +105,28 @@ Exemplo de resposta para a rota GET `/`:
 ```json
 [
   {
+    "manufacturing_year": 2020,
+    "license_plate": "BRA2E19",
     "id": 1,
     "model": "New Beetle",
     "brand": "Volkswagen",
     "color": "black",
-    "manufacturingYear": 2020,
-    "licensePlate": "BRA2E19",
     "reserve": null
+  },
+  {
+    "manufacturing_year": 2022,
+    "license_plate": "BRA3F24",
+    "id": 2,
+    "model": "New Beetle",
+    "brand": "Volkswagen",
+    "color": "white",
+    "reserve": {
+      "id": 1,
+      "initialDate": "2023-11-25",
+      "finalDate": "2023-11-27",
+      "name": "Marcel",
+      "phone": "73999874976"
+    }
   }
 ]
 ```
