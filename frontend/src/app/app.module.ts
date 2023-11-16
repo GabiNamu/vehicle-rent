@@ -8,21 +8,21 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { ShowVehiclesComponent } from './components/show-vehicles/show-vehicles.component';
 import { AddVehicleComponent } from './components/add-vehicle/add-vehicle.component';
 import { FormComponent } from './components/form/form.component';
 import { HomeComponent } from './components/home/home.component';
+import { ReserveComponent } from './components/reserve/reserve.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,
     ShowVehiclesComponent,
     AddVehicleComponent,
     FormComponent,
-    HomeComponent
+    HomeComponent,
+    ReserveComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +30,7 @@ import { HomeComponent } from './components/home/home.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -17,8 +17,8 @@ public class Vehicle {
   private String color;
   private int manufacturingYear;
   private String licensePlate;
-  private boolean reserved = false;
-
+  @OneToOne(cascade = CascadeType.ALL, mappedBy = "vehicle")
+  private Reserve reserve;
 
   /**
    * Instantiates a new Vehicle.
@@ -92,11 +92,11 @@ public class Vehicle {
     this.licensePlate = licensePlate;
   }
 
-  public boolean isReserved() {
-    return reserved;
+  public Reserve getReserve() {
+    return reserve;
   }
 
-  public void setReserved(boolean reserved) {
-    this.reserved = reserved;
+  public void setReserve(Reserve reserve) {
+    this.reserve = reserve;
   }
 }

@@ -1,0 +1,60 @@
+<form (ngSubmit)="submit()" [formGroup]="reserveForm" #formDir="ngForm" 
+class="container mt-5 p-4 bg-dark"
+style="max-width: 700px;"
+>
+<p class="text-light">Adicione sua Reserva:</p>
+  <div class="form-floating mb-3">
+    <input 
+    class="form-control"
+    type="date" 
+    placeholder="Data inicial"
+    formControlName="initial_date"
+    required
+    >
+    <label for="floatingInput">Data inicial</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input 
+    class="form-control"
+    type="date"
+    placeholder="Data final"
+    formControlName="final_date"
+    >
+    <label for="floatingInput">Data final</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input 
+    class="form-control"
+    type="text" 
+    placeholder="Nome"
+    formControlName="name"
+    >
+    <label for="floatingInput">Nome</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input 
+    class="form-control"
+    type="text" 
+    placeholder="Telefone"
+    formControlName="phone"
+    maxlength="11"
+    minlength="11"
+    pattern="[0-9]*"
+    >
+    <label for="floatingInput">Telefone</label>
+  </div>
+  <div *ngIf="reserveForm.controls['phone'].hasError('pattern') && !reserveForm.controls['phone'].hasError('minlength')" class="form-text text-danger mb-2">
+    Somente números são permitidos.
+  </div>
+  <div *ngIf="reserveForm.controls['phone'].hasError('minlength')" class="form-text text-danger mb-2">
+    Número inválido (Por favor, coloque o seu DDD)!
+  </div>
+  
+  <div *ngIf="formDir.submitted">
+    <p *ngIf="reserveForm.invalid && !reserveForm.controls['phone'].hasError('pattern') && !reserveForm.controls['phone'].hasError('minlength')" class="form-text text-danger">
+      Por favor, selecione datas válidas e preencha todos os campos!</p>
+  </div>
+  <div class="d-grid">
+  <button type="submit" class="btn btn-outline-primary btn-lg">Cadastrar</button>
+</div>
+</form>

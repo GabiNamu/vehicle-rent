@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Vehicle, addVehicle } from '../Vehicle';
+import { AddReserve, Reserve } from '../Reserve';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,14 @@ export class VehicleService {
 
   insert(vehicle: addVehicle) {
     return this.http.post<addVehicle>(this.apiUrl, vehicle);
+  }
+
+  insertReserve(vehicleId: number, reserve: AddReserve ) {
+    return this.http.post<AddReserve>(`${this.apiUrl}/${vehicleId}/reserve`, reserve);
+  }
+
+  removeReserve(vehicleId: number) {
+    return this.http.delete<Reserve>(`${this.apiUrl}/${vehicleId}/reserve`);
   }
   
 }

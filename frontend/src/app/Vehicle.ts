@@ -1,3 +1,5 @@
+import { Reserve } from "./Reserve";
+
 export interface addVehicle {
   model: string;
   brand: string;
@@ -8,6 +10,6 @@ export interface addVehicle {
 
 export interface Vehicle extends addVehicle {
   id: number;
-  reserved: boolean;
+  reserve: Reserve | null;
 }
 

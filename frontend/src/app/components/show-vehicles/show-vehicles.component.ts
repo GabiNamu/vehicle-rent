@@ -10,12 +10,14 @@ import { Component } from '@angular/core';
 })
 export class ShowVehiclesComponent {
   vehicles: Vehicle[] = [];
+  vehicle!: Vehicle;
+  modal: boolean = false;
   
   constructor(
     private vehicleService: VehicleService,
     private route: ActivatedRoute,
     private router: Router) {
-    this.getVehicles();
+      this.getVehicles();
   }
 
   ngOnInit(): void {
@@ -33,30 +35,45 @@ export class ShowVehiclesComponent {
   }
 
   removeVehicle(vehicle: Vehicle){
-    if (!vehicle.reserved) {
+    if (vehicle.reserve == null) {
       this.vehicles = this.vehicles.filter((a) => vehicle !== a);
       this.vehicleService.remove(vehicle.id).subscribe();
     }
   }
 
   reserveVehicle(vehicle: Vehicle) {
-    this.vehicles.map((element) => {
-      if (element.id == vehicle.id) {
-        element.reserved = !vehicle.reserved
+    this.router.navigate(['/reservar', vehicle.id]);
+  }
+
+  removeReserve() {
+    this.vehicleService.removeReserve(this.vehicle.id).subscribe();
+    this.vehicles = this.vehicles.map((vehicle) => {
+      if (vehicle.id === this.vehicle.id) {
+        vehicle.reserve = null
       }
-      return 
+      return vehicle;
     });
-    this.vehicleService.reserve(vehicle.id, vehicle).subscribe();
+  }
+
+  openModal(vehicle: Vehicle) {
+    console.log("entei")
+    this.modal = true;
+    this.vehicle = vehicle;
+    console.log(this.modal)
+  }
+
+  closeModal() {
+    this.modal = false;
   }
 
   filterReserved() {
     this.vehicleService.getAll().subscribe(
-      (vehicles) => (this.vehicles = vehicles.filter((vehicle) => vehicle.reserved == true)));
+      (vehicles) => (this.vehicles = vehicles.filter((vehicle) => vehicle.reserve != null)));
   }
 
   filterNotReserved() {
     this.vehicleService.getAll().subscribe(
-      (vehicles) => (this.vehicles = vehicles.filter((vehicle) => vehicle.reserved == false)));
+      (vehicles) => (this.vehicles = vehicles.filter((vehicle) => vehicle.reserve == null)));
   }
   
 }

@@ -1,5 +1,6 @@
 package com.project.backend.controllers.dto;
 
+import com.project.backend.models.entities.Reserve;
 import com.project.backend.models.entities.Vehicle;
 
 /**
@@ -12,7 +13,9 @@ public record VehicleDto(
   String color,
   int manufacturingYear,
   String licensePlate,
-  boolean reserved) {
+  Reserve reserve
+
+) {
 
   /**
    * To vehicle vehicle.
