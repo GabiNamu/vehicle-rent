@@ -4,10 +4,8 @@ import com.project.backend.models.entities.Reserve;
 import com.project.backend.models.entities.Vehicle;
 import com.project.backend.models.repositories.ReserveRepository;
 import com.project.backend.models.repositories.VehicleRepository;
-
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,26 +39,6 @@ public class VehicleService {
   public Vehicle insert(Vehicle vehicle) {
     return vehicleRepository.save(vehicle);
   }
-
-//  /**
-//   * Reserve optional.
-//   *
-//   * @param id the id
-//   * @return the optional
-//   */
-//  public Optional<Vehicle> reserve(Long id) {
-//    Optional<Vehicle> vehicleOptional = vehicleRepository.findById(id);
-//
-//    if (vehicleOptional.isPresent()) {
-//      Vehicle vehicleFromDb = vehicleOptional.get();
-//      vehicleFromDb.setReserved(!vehicleFromDb.isReserved());
-//
-//      Vehicle updatedVehicle = vehicleRepository.save(vehicleFromDb);
-//      return Optional.of(updatedVehicle);
-//    }
-//
-//    return vehicleOptional;
-//  }
 
   /**
    * Remove by id optional.
@@ -109,6 +87,12 @@ public class VehicleService {
     return Optional.empty();
   }
 
+  /**
+   * Remove reserve by id optional.
+   *
+   * @param vehicleId the vehicle id
+   * @return the optional
+   */
   public Optional<Reserve> removeReserveById(Long vehicleId) {
     Optional<Vehicle> optionalVehicle = vehicleRepository.findById(vehicleId);
 

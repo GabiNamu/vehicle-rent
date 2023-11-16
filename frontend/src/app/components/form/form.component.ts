@@ -5,8 +5,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  templateUrl: './form.component.html'
 })
 export class FormComponent {
   vehicleForm!: FormGroup
@@ -18,8 +17,8 @@ export class FormComponent {
       brand: new FormControl('', [Validators.required]),
       model: new FormControl('', [Validators.required]),
       color: new FormControl('', [Validators.required]),
-      manufacturingYear: new FormControl(0, [Validators.required]),
-      licensePlate: new FormControl('', [Validators.required]),
+      manufacturing_year: new FormControl(0, [Validators.required]),
+      license_plate: new FormControl('', [Validators.required]),
     })
   }
 
@@ -36,11 +35,11 @@ export class FormComponent {
   }
 
   get manufacturingYear() {
-    return this.vehicleForm.get('manufacturingYear')!;
+    return this.vehicleForm.get('manufacturing_year')!;
   }
 
   get licensePlate() {
-    return this.vehicleForm.get('licensePlate');
+    return this.vehicleForm.get('license_plate');
   }
 
   submit() {

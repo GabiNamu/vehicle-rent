@@ -15,7 +15,9 @@ public class Vehicle {
   private String model;
   private String brand;
   private String color;
+  @Column(name = "manufacturing_year")
   private int manufacturingYear;
+  @Column(name = "license_plate")
   private String licensePlate;
   @OneToOne(cascade = CascadeType.ALL, mappedBy = "vehicle")
   private Reserve reserve;

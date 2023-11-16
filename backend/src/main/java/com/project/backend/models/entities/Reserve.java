@@ -2,9 +2,7 @@ package com.project.backend.models.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
  * The type Reserve.
@@ -37,7 +35,7 @@ public class Reserve {
    * Instantiates a new Reserve.
    *
    * @param id          the id
-   * @param initialDate the inicial date
+   * @param initialDate the initial date
    * @param finalDate   the final date
    * @param name        the name
    * @param phone       the phone
@@ -98,10 +96,10 @@ public class Reserve {
   /**
    * Sets inicial date.
    *
-   * @param inicialDate the inicial date
+   * @param initialDate the inicial date
    */
-  public void setInitialDate(LocalDate inicialDate) {
-    this.initialDate = inicialDate;
+  public void setInitialDate(LocalDate initialDate) {
+    this.initialDate = initialDate;
   }
 
   /**

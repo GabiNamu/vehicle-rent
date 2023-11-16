@@ -6,21 +6,24 @@ import { DateValidator } from 'src/app/date.validator';
 
 @Component({
   selector: 'app-reserve',
-  templateUrl: './reserve.component.html',
-  styleUrls: ['./reserve.component.scss']
+  templateUrl: './reserve.component.html'
 })
 export class ReserveComponent {
   reserveForm!: FormGroup;
   vehicleId: number = 0;
 
-  constructor(private vehicleService: VehicleService, private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private vehicleService: VehicleService, 
+    private route: ActivatedRoute, 
+    private router: Router) {}
 
   ngOnInit(): void {
     this.reserveForm = new FormGroup({
       initial_date: new FormControl('', [Validators.required, DateValidator.futureDate()]),
       final_date: new FormControl('', [Validators.required, DateValidator.futureDate()]),
       name: new FormControl('', [Validators.required]),
-      phone: new FormControl('', [Validators.required, Validators.maxLength(11), Validators.minLength(11), Validators.pattern('[0-9]*')]),
+      phone: new FormControl('', [Validators.required, 
+        Validators.maxLength(11), Validators.minLength(11), Validators.pattern('[0-9]*')]),
     })
     this.route.paramMap.subscribe(params => {
       this.vehicleId = +params.get('vehicleId')!;

@@ -1,5 +1,6 @@
 package com.project.backend.controllers.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.project.backend.models.entities.Reserve;
 import com.project.backend.models.entities.Vehicle;
 
@@ -7,13 +8,13 @@ import com.project.backend.models.entities.Vehicle;
  * The type Vehicle dto.
  */
 public record VehicleDto(
-  Long id,
-  String model,
-  String brand,
-  String color,
-  int manufacturingYear,
-  String licensePlate,
-  Reserve reserve
+    Long id,
+    String model,
+    String brand,
+    String color,
+    int manufacturingYear,
+    String licensePlate,
+    Reserve reserve
 
 ) {
 

@@ -6,11 +6,9 @@ import com.project.backend.controllers.dto.VehicleDto;
 import com.project.backend.models.entities.Reserve;
 import com.project.backend.models.entities.Vehicle;
 import com.project.backend.services.VehicleService;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,27 +47,6 @@ public class VehicleController {
     return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
   }
 
-//  /**
-//   * Update response entity.
-//   *
-//   * @param vehicleId the vehicle id
-//   * @return the response entity
-//   */
-//  @PutMapping("/{vehicleId}")
-//  public ResponseEntity<ResponseDto<Vehicle>> update(@PathVariable Long vehicleId) {
-//    Optional<Vehicle> optionalVehicle = vehicleService.reserve(vehicleId);
-//
-//    if (optionalVehicle.isEmpty()) {
-//      ResponseDto<Vehicle> responseDto = new ResponseDto<>(
-//        String.format("Não foi encontrado o veículo de ID %d", vehicleId), null);
-//      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseDto);
-//    }
-//
-//    ResponseDto<Vehicle> responseDto = new ResponseDto<>(
-//      "Veículo atualizado com sucesso!", optionalVehicle.get());
-//    return ResponseEntity.ok(responseDto);
-//  }
-
   /**
    * Remove by id response entity.
    *
@@ -82,7 +59,7 @@ public class VehicleController {
 
     if (optionalVehicle.isEmpty() || optionalVehicle.get().getReserve() != null) {
       ResponseDto<Vehicle> responseDto = new ResponseDto<>(
-        String.format("Não foi possível deletar o veículo de ID %d", vehicleId), null);
+          String.format("Não foi possível deletar o veículo de ID %d", vehicleId), null);
       return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseDto);
     }
 
@@ -99,7 +76,14 @@ public class VehicleController {
   public List<VehicleDto> getAll() {
     List<Vehicle> allVehicles = vehicleService.getAll();
     return allVehicles.stream()
-      .map((vehicle) -> new VehicleDto(vehicle.getId(), vehicle.getModel(), vehicle.getBrand(), vehicle.getColor(), vehicle.getManufacturingYear(), vehicle.getLicensePlate(), vehicle.getReserve()))
+      .map((vehicle) -> new VehicleDto(
+        vehicle.getId(),
+        vehicle.getModel(),
+        vehicle.getBrand(),
+        vehicle.getColor(),
+        vehicle.getManufacturingYear(),
+        vehicle.getLicensePlate(),
+        vehicle.getReserve()))
       .collect(Collectors.toList());
   }
 
@@ -115,20 +99,25 @@ public class VehicleController {
     Optional<Reserve> newReserve = vehicleService.insertReserve(vehicleId, reserveDto.toReserve());
     if (newReserve.isEmpty()) {
       ResponseDto<Reserve> responseDto = new ResponseDto<>(
-        String.format("Não foi possível reservar o veículo de ID %d", vehicleId), null);
+          String.format("Não foi possível reservar o veículo de ID %d", vehicleId), null);
       return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseDto);
     }
     ResponseDto<Reserve> responseDto = new ResponseDto<>("Reserva criado com sucesso!", newReserve.get());
     return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
   }
 
+  /**
+   * Remove reserve by id response entity.
+   *
+   * @param vehicleId the vehicle id
+   * @return the response entity
+   */
   @DeleteMapping("/{vehicleId}/reserve")
   public ResponseEntity<ResponseDto<Reserve>> removeReserveById(@PathVariable Long vehicleId) {
     Optional<Reserve> optionalReserve = vehicleService.removeReserveById(vehicleId);
 
     if (optionalReserve.isEmpty()) {
-      ResponseDto<Reserve> responseDto = new ResponseDto<>(
-        String.format("Não foi possível deletar a reserva"), null);
+      ResponseDto<Reserve> responseDto = new ResponseDto<>("Não foi possível deletar a reserva", null);
       return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseDto);
     }
 
